@@ -60,6 +60,7 @@ function editTask(taskId, taskName) {
   editId = taskId;
   isEditedTask = true;
   taskInput.value = taskName;
+  addButton.textContent = 'Save'; // Thay đổi nội dung nút "Add" thành "Save"
 }
 
 function deleteTask(deleteId) {
@@ -83,6 +84,7 @@ function handleAddTask() {
     } else {
       isEditedTask = false;
       todos[editId].name = userTask;
+      addButton.textContent = 'Add'; // Đổi lại nội dung nút "Save" thành "Add"
     }
     taskInput.value = '';
     // let taskInfo = { name: userTask, status: 'pending' };
@@ -102,4 +104,6 @@ taskInput.addEventListener('keyup', (e) => {
 
 resetButton.addEventListener('click', () => {
   taskInput.value = '';
+  isEditedTask = false; // Khi nhấn Cancel, đặt lại isEditedTask thành false
+  addButton.textContent = 'Add'; // Đổi lại nội dung nút "Save" thành "Add"
 });
