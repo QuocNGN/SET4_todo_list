@@ -36,7 +36,8 @@ function showTodo() {
   }
 
   taskBox.innerHTML =
-    li || `<img src="no-task.png" alt="" class="empty-image" width="150">`;
+    li ||
+    `<img src="asset/no-task.png" alt="" class="empty-image" width="150">`;
 }
 showTodo();
 
