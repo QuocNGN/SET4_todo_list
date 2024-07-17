@@ -8,8 +8,9 @@ const resetButton = document.querySelector('.reset-button');
 let editId;
 let isEditedTask = false;
 let todos = JSON.parse(localStorage.getItem('todo-list')) || [];
-let currentFilter = 'all'; // Thêm biến này để lưu trữ bộ lọc hiện tại
+let currentFilter = 'all'; // Add this variable to store the current filter
 
+// show task with  selected
 selectFilters.addEventListener('change', (event) => {
   const selected = event.target.value;
   currentFilter = selected;
@@ -54,14 +55,14 @@ function updateStatus(selectedTask) {
     todos[selectedTask.id].status = 'pending';
   }
   localStorage.setItem('todo-list', JSON.stringify(todos));
-  showTodo(); // Hiển thị lại danh sách sau khi cập nhật trạng thái
+  showTodo(); // Show the list again after updating the status
 }
 
 function editTask(taskId, taskName) {
   editId = taskId;
   isEditedTask = true;
   taskInput.value = taskName;
-  addButton.textContent = 'Save'; // Thay đổi nội dung nút "Add" thành "Save"
+  addButton.textContent = 'Save'; // Change the "Add" button content to "Save"
 }
 
 function deleteTask(deleteId) {
@@ -69,7 +70,7 @@ function deleteTask(deleteId) {
   isEditedTask = false;
   todos.splice(deleteId, 1);
   localStorage.setItem('todo-list', JSON.stringify(todos));
-  showTodo(); // Hiển thị lại danh sách sau khi xóa công việc
+  showTodo(); // Show the list again after deleting the job
 }
 
 function handleAddTask() {
@@ -85,7 +86,7 @@ function handleAddTask() {
     } else {
       isEditedTask = false;
       todos[editId].name = userTask;
-      addButton.textContent = 'Add'; // Đổi lại nội dung nút "Save" thành "Add"
+      addButton.textContent = 'Add'; // Change the content of the "Save" button to "Add"
     }
     taskInput.value = '';
     // let taskInfo = { name: userTask, status: 'pending' };
@@ -105,6 +106,6 @@ taskInput.addEventListener('keyup', (e) => {
 
 resetButton.addEventListener('click', () => {
   taskInput.value = '';
-  isEditedTask = false; // Khi nhấn Cancel, đặt lại isEditedTask thành false
-  addButton.textContent = 'Add'; // Đổi lại nội dung nút "Save" thành "Add"
+  isEditedTask = false; // When Cancel is pressed, reset isEditedTask to false
+  addButton.textContent = 'Add'; // Change the content of the "Save" button to "Add".
 });
